@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunversion":"2",
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "rofi/multi-client",
+            "host": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "rofi/multi-server",
+            "host": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "rofi/multi-worker",
+            "host": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "rofi/multi-nginx",
+            "host": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hosttPort":80,
+                    "containerPort":80
+                }
+            ],
+            "links":["client","server"]
+
+        }
+    ]
+}
