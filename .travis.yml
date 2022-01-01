@@ -3,13 +3,13 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-react -f ./client/Dockerfile.dev ./client 
+  - docker build -t docker-client -f ./client/Dockerfile.dev ./client 
 
 script:
-  - docker run -e CI=true docker-react npm test
+  - docker run -e CI=true docker-client npm test
 
 after_success:
-  - docker build -t rofi/multi-react ./client
+  - docker build -t rofi/multi-client ./client
   - docker build -t rofi/multi-nginx ./nginx
   - docker build -t rofi/multi-server ./server
   - docker build -t rofi/multi-worker ./worker
