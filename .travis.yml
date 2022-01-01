@@ -14,7 +14,7 @@ after_success:
   - docker build -t rofi/multi-server ./server
   - docker build -t rofi/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin # echo $password is retrieve travis env variable and input to docker login login to docker hub to push image publicly
-  - docker push rofi/multi-react
+  - docker push rofi/multi-client
   - docker push rofi/multi-nginx
   - docker push rofi/multi-server
   - docker push rofi/multi-worker
